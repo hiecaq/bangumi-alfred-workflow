@@ -37,8 +37,11 @@ def main(wf):
 
     for item in items:
         wf.add_item(
-            title=item['name_cn'],
-            subtitle=TYPE[item['type']] + ' - ' + item['name'],
+            title=item['name'],
+            subtitle=(
+                TYPE[item['type']] + ' - ' + item['name_cn']
+                if item['name_cn'] else TYPE[item['type']]
+            ),
             arg=item['url'],
             valid=True,
             icon=ICON
