@@ -1,5 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""
+    bangumi-alfred-workflow
+    ~~~~~~~~~~~~~~~~~~~~~~~
+
+    An Alfred Workflow for bgm.tv
+
+    :copyright: (c) 2017 by quinoa42.
+    :license: MIT, see LICENSE for more details.
+"""
 
 from __future__ import unicode_literals
 
@@ -13,10 +22,10 @@ TYPE = {1: '书籍', 2: '动画', 3: '音乐', 4: '游戏', 6: '三次元'}
 
 
 def get_search_result(query):
-    """TODO: Docstring for get_search_result.
+    """Return the search result of this query as a list
 
-    :query: TODO
-    :returns: TODO
+    :query: str of the text wish to search
+    :returns: a list of pre-edited items
 
     """
     url = 'https://api.bgm.tv/search/subject/{0}'.format(query)

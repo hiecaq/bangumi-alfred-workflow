@@ -3,6 +3,20 @@ bangumi-alfred-workflow
 
 This workflow implements searching entries on [Bangumi](http://bgm.tv/)
 
+Usage
+--------------------
+
+```
+bgm QUERY
+```
+
+Todo
+--------------------
+
+- [ ] Show icons when searching
+- [ ] Implement login feature
+- [ ] Implement features like marking episodes as watched
+
 Used Resources
 --------------------
 
