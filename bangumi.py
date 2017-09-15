@@ -24,7 +24,7 @@ TYPE = {1: '书籍', 2: '动画', 3: '音乐', 4: '游戏', 6: '三次元'}
 def get_search_result(query):
     """Return the search result of this query as a list
 
-    :query: str of the text wish to search
+    :param str query: the text wish to test
     :returns: a list of pre-edited items
 
     """
@@ -38,6 +38,11 @@ def get_search_result(query):
 
 
 def main(wf):
+    """Setup the workflow with items
+
+    :param Workflow3 wf: the Workflow3 object this script works on
+
+    """
     query = wf.args[0]
 
     items = wf.cached_data(
