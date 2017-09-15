@@ -14,6 +14,8 @@ from __future__ import unicode_literals
 
 import sys
 
+import hashlib
+
 from workflow import Workflow3, web
 
 ICON = 'icon.png'
@@ -45,8 +47,10 @@ def main(wf):
     """
     query = wf.args[0]
 
+    key = 'result-' + hashlib.md5(query.encode('utf-8')).hexdigest()
+
     items = wf.cached_data(
-        'result:' + query, lambda: get_search_result(query), max_age=600
+        key, lambda: get_search_result(query), max_age=600
     )
 
     for item in items:
