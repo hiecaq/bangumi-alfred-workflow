@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-    bangumi-alfred-workflow
-    ~~~~~~~~~~~~~~~~~~~~~~~
+    bangumi-alfred-workflow.bangumi
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     An Alfred Workflow for bgm.tv
 
@@ -15,27 +15,8 @@ from __future__ import unicode_literals
 import hashlib
 import sys
 
-from workflow import Workflow3, web
-
-ICON = 'icon.png'
-
-TYPE = {1: '书籍', 2: '动画', 3: '音乐', 4: '游戏', 6: '三次元'}
-
-
-def get_search_result(query):
-    """Return the search result of this query as a list
-
-    :param str query: the text wish to test
-    :returns: a list of pre-edited items
-
-    """
-    url = 'https://api.bgm.tv/search/subject/{0}'.format(query)
-    params = {'responseGroup': 'simple', 'max_results': '11', 'start': '0'}
-    r = web.get(url, params)
-    r.raise_for_status()
-
-    result = r.json()
-    return result['list']
+from bangumi import search_for
+from workflow import Workflow3
 
 
 def main(wf):
@@ -48,20 +29,10 @@ def main(wf):
 
     key = 'result-' + hashlib.md5(query.encode('utf-8')).hexdigest()
 
-    items = wf.cached_data(key, lambda: get_search_result(query), max_age=600)
+    items = wf.cached_data(key, lambda: search_for(query), max_age=600)
 
     for item in items:
-        subtitle = (
-            TYPE[item['type']] + ' - ' + item['name_cn']
-            if item['name_cn'] else TYPE[item['type']]
-        )
-        wf.add_item(
-            title=item['name'],
-            subtitle=subtitle,
-            arg=item['url'],
-            valid=True,
-            icon=ICON
-        )
+        wf.add_item(**item)
 
     wf.send_feedback()
 
