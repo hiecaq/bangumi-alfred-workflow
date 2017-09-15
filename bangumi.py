@@ -12,9 +12,8 @@
 
 from __future__ import unicode_literals
 
-import sys
-
 import hashlib
+import sys
 
 from workflow import Workflow3, web
 
@@ -49,17 +48,16 @@ def main(wf):
 
     key = 'result-' + hashlib.md5(query.encode('utf-8')).hexdigest()
 
-    items = wf.cached_data(
-        key, lambda: get_search_result(query), max_age=600
-    )
+    items = wf.cached_data(key, lambda: get_search_result(query), max_age=600)
 
     for item in items:
+        subtitle = (
+            TYPE[item['type']] + ' - ' + item['name_cn']
+            if item['name_cn'] else TYPE[item['type']]
+        )
         wf.add_item(
             title=item['name'],
-            subtitle=(
-                TYPE[item['type']] + ' - ' + item['name_cn']
-                if item['name_cn'] else TYPE[item['type']]
-            ),
+            subtitle=subtitle,
             arg=item['url'],
             valid=True,
             icon=ICON
