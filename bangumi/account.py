@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-    bangumi-alfred-workflow.bangumi.login
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    bangumi-alfred-workflow.bangumi.account
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     The login utility for bgm.tv
 

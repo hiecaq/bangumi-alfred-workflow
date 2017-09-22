@@ -21,6 +21,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>D2A4AA1D-427F-4934-9341-F6E21C2BAA7F</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>AFB4B0D4-E943-4A60-BC1A-5537042E81EB</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 	</dict>
 	<key>createdby</key>
 	<string>quinoa42</string>
@@ -141,6 +154,70 @@
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>bgm anime</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Please wait ...</string>
+				<key>script</key>
+				<string>python bangumi.py --watching "{query}"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>List and filter anime that user is current watching</string>
+				<key>title</key>
+				<string>Lis anime that user is current watching</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>D2A4AA1D-427F-4934-9341-F6E21C2BAA7F</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://bgm.tv/subject/{query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>AFB4B0D4-E943-4A60-BC1A-5537042E81EB</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
@@ -149,9 +226,9 @@
 		<key>099F9A55-3AA5-4FE3-9660-76944BDE8787</key>
 		<dict>
 			<key>xpos</key>
-			<integer>220</integer>
-			<key>ypos</key>
 			<integer>190</integer>
+			<key>ypos</key>
+			<integer>200</integer>
 		</dict>
 		<key>2D796BD6-0791-4FF8-9ADA-F03FD82CC519</key>
 		<dict>
@@ -160,12 +237,26 @@
 			<key>ypos</key>
 			<integer>40</integer>
 		</dict>
+		<key>AFB4B0D4-E943-4A60-BC1A-5537042E81EB</key>
+		<dict>
+			<key>xpos</key>
+			<integer>400</integer>
+			<key>ypos</key>
+			<integer>350</integer>
+		</dict>
 		<key>C1B13666-B5AE-4FF5-BD45-BA764956768E</key>
 		<dict>
 			<key>xpos</key>
 			<integer>550</integer>
 			<key>ypos</key>
 			<integer>60</integer>
+		</dict>
+		<key>D2A4AA1D-427F-4934-9341-F6E21C2BAA7F</key>
+		<dict>
+			<key>xpos</key>
+			<integer>160</integer>
+			<key>ypos</key>
+			<integer>350</integer>
 		</dict>
 	</dict>
 	<key>version</key>

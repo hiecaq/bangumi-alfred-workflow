@@ -16,7 +16,7 @@ import argparse
 import hashlib
 import sys
 
-from bangumi import login, search_for
+from bangumi import Animelist, login, search_for
 from workflow import Workflow3
 
 
@@ -31,6 +31,32 @@ def save_name(prefix, name):
     return prefix + '-' + hashlib.md5(name.encode('utf-8')).hexdigest()
 
 
+def filter_key(item):
+    """Generate a filter key for the item.
+
+    """
+    return item['title'] + ' ' + item['subtitle']
+
+
+def get_anime_list(wf):
+    """Get an Animelist instance.
+
+    :param Workflow3 wf: the Workflow3 object
+    :returns: Animelist object
+
+    """
+    try:
+        animelist = Animelist(
+            wf.settings['UID'], wf.get_password('bangumi-auth-token')
+        )
+    except Exception as e:
+        wf.add_item(dict(title='Please login first', valid=False))
+        wf.send_feedback()
+        return 0
+    else:
+        return animelist
+
+
 def main(wf):
     """Setup the workflow with items
 
@@ -40,6 +66,9 @@ def main(wf):
     parser = argparse.ArgumentParser()
     parser.add_argument('--search', dest='query', nargs='?', default=None)
     parser.add_argument('--setkey', dest='input', nargs='?', default=None)
+    parser.add_argument(
+        '--watching', dest='watchlist', nargs='?', default=None
+    )
     args = parser.parse_args(wf.args)
 
     ############
@@ -59,6 +88,18 @@ def main(wf):
         items = wf.cached_data(
             save_name('login', query), lambda: login(query, wf), max_age=60
         )
+
+    ##############
+    #  watching  #
+    ##############
+    if args.watchlist is not None:
+        query = args.watchlist
+        animelist = get_anime_list(wf)
+        items = wf.cached_data(
+            'watchlist', animelist.watchlist, max_age=600
+        )
+        if query:
+            items = wf.filter(query, items, key=filter_key)
 
     for item in items:
         wf.add_item(**item)
