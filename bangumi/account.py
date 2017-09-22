@@ -16,6 +16,18 @@ from workflow import ICON_ERROR, ICON_INFO, ICON_WARNING, web
 URL = 'https://api.bgm.tv/auth?source=onAir'
 
 
+def _event(title, subtitle, icon):
+    """Build a event used as returned item
+
+    :param str title: the title of this item
+    :param str subtitle: the subtitle of this item
+    :icon: the icon for this item
+    :returns: a list of dict, actually just one entry
+
+    """
+    return [dict(title=title, subtitle=subtitle, valid=False, icon=icon)]
+
+
 def login(text, wf):
     """Login with the given text; return an item saying error if failed
 
@@ -26,53 +38,33 @@ def login(text, wf):
     """
 
     if 'UID' in wf.settings and text != 'logout':
-        return [
-            dict(
-                title='Already logging into ' + wf.settings['UID'],
-                subtitle=(
-                    'If you want to switch to another account, '
-                    'please log out first.'
-                ),
-                valid=False,
-                icon=ICON_WARNING
-            )
-        ]
+        return _event(
+            'Already logging into ' + wf.settings['UID'],
+            'If you want to switch to another account, please log out first.',
+            ICON_WARNING
+        )
 
     if text == 'logout':
         try:
             del wf.settings['UID']
             wf.delete_password('bangumi-auth-token')
         except Exception as e:
-            return [
-                dict(
-                    title='You are not logged into any account.',
-                    subtitle='Please Logging into anything first.',
-                    valid=False,
-                    icon=ICON_ERROR
-                )
-            ]
+            return _event(
+                'You are not logged into any account.',
+                'Please Logging into anything first.', ICON_ERROR
+            )
         else:
-            return [
-                dict(
-                    title='Logout sucessfully.',
-                    subtitle=(
-                        'You successfully logout from the previous account.'
-                    ),
-                    valid=False,
-                    icon=ICON_INFO
-                )
-            ]
+            return _event(
+                'Logout sucessfully.',
+                'You successfully logout from the previous account.', ICON_INFO
+            )
 
     info = text.split()
     if len(info) != 2:
-        return [
-            dict(
-                title='Wrong input',
-                subtitle='Please use the format <email> <password>',
-                valid=False,
-                icon=ICON_ERROR
-            )
-        ]
+        return _event(
+            'Wrong input', 'Please use the format <email> <password>',
+            ICON_ERROR
+        )
 
     email, password = info
     data = {
@@ -90,22 +82,12 @@ def login(text, wf):
         wf.settings['UID'] = output['username']
         wf.save_password('bangumi-auth-token', output['auth'])
 
-        return [
-            dict(
-                title='Log in success.',
-                subtitle='Sucessfully logging into ' + output['username'],
-                valid=False,
-                icon=ICON_INFO
-            )
-        ]
+        return _event(
+            'Log in success.',
+            'Sucessfully logging into ' + output['username'], ICON_INFO
+        )
     else:
-        return [
-            dict(
-                title='Log in failed.',
-                subtitle=(
-                    'ERROR ' + str(output['code']) + ': ' + output['error']
-                ),
-                valid=False,
-                icon=ICON_ERROR
-            )
-        ]
+        return _event(
+            'Log in failed.',
+            'ERROR ' + str(output['code']) + ': ' + output['error'], ICON_ERROR
+        )
