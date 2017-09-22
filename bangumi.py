@@ -43,7 +43,7 @@ def get_anime_list(wf):
 
     :param Workflow3 wf: the Workflow3 object
     :returns: Animelist object
-
+    :rtype: Animelist
     """
     try:
         animelist = Animelist(

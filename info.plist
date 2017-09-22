@@ -186,7 +186,7 @@
 				<key>subtext</key>
 				<string>List and filter anime that user is current watching</string>
 				<key>title</key>
-				<string>Lis anime that user is current watching</string>
+				<string>List anime that user is current watching</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
