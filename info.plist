@@ -63,7 +63,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
-				<string>bgm</string>
+				<string>bgm search</string>
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
@@ -96,24 +96,76 @@
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>bgm login</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>2</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string>python bangumi.py --setkey "{query}"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Please input with the format &lt;email&gt; &lt;password&gt;</string>
+				<key>title</key>
+				<string>Login into bgm.tv</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>099F9A55-3AA5-4FE3-9660-76944BDE8787</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
+		<key>099F9A55-3AA5-4FE3-9660-76944BDE8787</key>
+		<dict>
+			<key>xpos</key>
+			<integer>270</integer>
+			<key>ypos</key>
+			<integer>200</integer>
+		</dict>
 		<key>2D796BD6-0791-4FF8-9ADA-F03FD82CC519</key>
 		<dict>
 			<key>xpos</key>
-			<integer>160</integer>
+			<integer>270</integer>
 			<key>ypos</key>
-			<integer>130</integer>
+			<integer>60</integer>
 		</dict>
 		<key>C1B13666-B5AE-4FF5-BD45-BA764956768E</key>
 		<dict>
 			<key>xpos</key>
-			<integer>460</integer>
+			<integer>450</integer>
 			<key>ypos</key>
-			<integer>130</integer>
+			<integer>60</integer>
 		</dict>
 	</dict>
 	<key>version</key>

@@ -16,8 +16,19 @@ import argparse
 import hashlib
 import sys
 
-from bangumi import search_for
+from bangumi import login, search_for
 from workflow import Workflow3
+
+
+def save_name(prefix, name):
+    """Return the hashed save name for the given name
+
+    :param str prefix: the prefix for this name
+    :param str name: the name need to be
+    :returns: a string as the save name
+
+    """
+    return prefix + '-' + hashlib.md5(name.encode('utf-8')).hexdigest()
 
 
 def main(wf):
@@ -36,13 +47,23 @@ def main(wf):
     ############
     if args.query:
         query = args.query
-        key = 'result-' + hashlib.md5(query.encode('utf-8')).hexdigest()
+        items = wf.cached_data(
+            save_name('result', query), lambda: search_for(query), max_age=600
+        )
 
-        items = wf.cached_data(key, lambda: search_for(query), max_age=600)
-        for item in items:
-            wf.add_item(**item)
+    #############
+    #  set key  #
+    #############
+    if args.input:
+        query = args.input
+        items = wf.cached_data(
+            save_name('login', query), lambda: login(query), max_age=60
+        )
 
-        wf.send_feedback()
+    for item in items:
+        wf.add_item(**item)
+
+    wf.send_feedback()
 
 
 if __name__ == "__main__":
