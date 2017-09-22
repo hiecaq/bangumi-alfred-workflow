@@ -57,7 +57,7 @@ def main(wf):
     if args.input:
         query = args.input
         items = wf.cached_data(
-            save_name('login', query), lambda: login(query), max_age=60
+            save_name('login', query), lambda: login(query, wf), max_age=60
         )
 
     for item in items:

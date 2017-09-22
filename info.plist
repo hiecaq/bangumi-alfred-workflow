@@ -35,25 +35,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>{query}</string>
-				<key>utf8</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>C1B13666-B5AE-4FF5-BD45-BA764956768E</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>argumenttrimmode</key>
@@ -99,6 +80,25 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>{query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>C1B13666-B5AE-4FF5-BD45-BA764956768E</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>argumenttrimmode</key>
@@ -110,13 +110,13 @@
 				<key>keyword</key>
 				<string>bgm login</string>
 				<key>queuedelaycustom</key>
-				<integer>3</integer>
+				<integer>10</integer>
 				<key>queuedelayimmediatelyinitially</key>
 				<false/>
 				<key>queuedelaymode</key>
 				<integer>2</integer>
 				<key>queuemode</key>
-				<integer>1</integer>
+				<integer>2</integer>
 				<key>runningsubtext</key>
 				<string></string>
 				<key>script</key>
@@ -149,21 +149,21 @@
 		<key>099F9A55-3AA5-4FE3-9660-76944BDE8787</key>
 		<dict>
 			<key>xpos</key>
-			<integer>270</integer>
+			<integer>220</integer>
 			<key>ypos</key>
-			<integer>200</integer>
+			<integer>190</integer>
 		</dict>
 		<key>2D796BD6-0791-4FF8-9ADA-F03FD82CC519</key>
 		<dict>
 			<key>xpos</key>
-			<integer>270</integer>
+			<integer>190</integer>
 			<key>ypos</key>
-			<integer>60</integer>
+			<integer>40</integer>
 		</dict>
 		<key>C1B13666-B5AE-4FF5-BD45-BA764956768E</key>
 		<dict>
 			<key>xpos</key>
-			<integer>450</integer>
+			<integer>550</integer>
 			<key>ypos</key>
 			<integer>60</integer>
 		</dict>
