@@ -12,6 +12,7 @@
 
 from __future__ import unicode_literals
 
+import argparse
 import hashlib
 import sys
 
@@ -25,16 +26,23 @@ def main(wf):
     :param Workflow3 wf: the Workflow3 object this script works on
 
     """
-    query = wf.args[0]
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--search', dest='query', nargs='?', default=None)
+    parser.add_argument('--setkey', dest='input', nargs='?', default=None)
+    args = parser.parse_args(wf.args)
 
-    key = 'result-' + hashlib.md5(query.encode('utf-8')).hexdigest()
+    ############
+    #  search  #
+    ############
+    if args.query:
+        query = args.query
+        key = 'result-' + hashlib.md5(query.encode('utf-8')).hexdigest()
 
-    items = wf.cached_data(key, lambda: search_for(query), max_age=600)
+        items = wf.cached_data(key, lambda: search_for(query), max_age=600)
+        for item in items:
+            wf.add_item(**item)
 
-    for item in items:
-        wf.add_item(**item)
-
-    wf.send_feedback()
+        wf.send_feedback()
 
 
 if __name__ == "__main__":
