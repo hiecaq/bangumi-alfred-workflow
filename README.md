@@ -25,13 +25,14 @@ To list all anime current watching,
 ```
 bgm anime [QUERY]
 ```
+and press `Enter` alone to open the url in browser, or `Cmd + Enter` to mark the next episode as watched.
 
 Todo
 --------------------
 
 - [ ] Show icons when searching
 - [x] Implement login feature
-- [ ] Implement features like marking episodes as watched
+- [x] Implement features like marking episodes as watched
 
 Used Resources
 --------------------
