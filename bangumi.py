@@ -45,6 +45,16 @@ def cache_filter(item):
     return item.startswith('watchlist')
 
 
+class LogoutException(Exception):
+    """Exception raised when the user haven't login"""
+
+    def __init__(self, message):
+        self.message = message
+
+    def __str__(self):
+        return self.message
+
+
 def get_anime_list(wf):
     """Get an Animelist instance.
 
@@ -57,9 +67,7 @@ def get_anime_list(wf):
             wf.settings['UID'], wf.get_password('bangumi-auth-token')
         )
     except Exception as e:
-        wf.add_item(dict(title='Please login first', valid=False))
-        wf.send_feedback()
-        return 0
+        raise LogoutException("Please login first")
     else:
         return animelist
 
