@@ -38,6 +38,13 @@ def filter_key(item):
     return item['title'] + ' ' + item['subtitle']
 
 
+def cache_filter(item):
+    """help method to filter cache that should be cleaned
+
+    """
+    return item.startswith('watchlist')
+
+
 def get_anime_list(wf):
     """Get an Animelist instance.
 
@@ -69,6 +76,7 @@ def main(wf):
     parser.add_argument(
         '--watching', dest='watchlist', nargs='?', default=None
     )
+    parser.add_argument('--update', dest='episode', nargs='?', default=None)
     args = parser.parse_args(wf.args)
 
     ############
@@ -95,11 +103,16 @@ def main(wf):
     if args.watchlist is not None:
         query = args.watchlist
         animelist = get_anime_list(wf)
-        items = wf.cached_data(
-            'watchlist', animelist.watchlist, max_age=600
-        )
+        items = wf.cached_data('watchlist', animelist.watchlist, max_age=600)
         if query:
             items = wf.filter(query, items, key=filter_key)
+
+    if args.episode:
+        animelist = get_anime_list(wf)
+        watched = animelist.update(args.episode)
+        if watched:
+            wf.clear_cache(cache_filter)
+        return 0
 
     for item in items:
         wf.add_item(**item)

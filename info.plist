@@ -8,6 +8,8 @@
 	<string>Internet</string>
 	<key>connections</key>
 	<dict>
+		<key>1E2969F0-F9A9-4305-B6EA-133CB7CC78D9</key>
+		<array/>
 		<key>2D796BD6-0791-4FF8-9ADA-F03FD82CC519</key>
 		<array>
 			<dict>
@@ -30,6 +32,16 @@
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>1E2969F0-F9A9-4305-B6EA-133CB7CC78D9</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Mark next episode as watched</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -157,6 +169,25 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://bgm.tv/subject/{query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>AFB4B0D4-E943-4A60-BC1A-5537042E81EB</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>argumenttrimmode</key>
@@ -202,21 +233,25 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>browser</key>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>python bangumi.py --update "{query}"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
 				<string></string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>https://bgm.tv/subject/{query}</string>
-				<key>utf8</key>
-				<true/>
+				<key>type</key>
+				<integer>0</integer>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
+			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>AFB4B0D4-E943-4A60-BC1A-5537042E81EB</string>
+			<string>1E2969F0-F9A9-4305-B6EA-133CB7CC78D9</string>
 			<key>version</key>
-			<integer>1</integer>
+			<integer>2</integer>
 		</dict>
 	</array>
 	<key>readme</key>
@@ -230,19 +265,26 @@
 			<key>ypos</key>
 			<integer>200</integer>
 		</dict>
+		<key>1E2969F0-F9A9-4305-B6EA-133CB7CC78D9</key>
+		<dict>
+			<key>xpos</key>
+			<integer>490</integer>
+			<key>ypos</key>
+			<integer>440</integer>
+		</dict>
 		<key>2D796BD6-0791-4FF8-9ADA-F03FD82CC519</key>
 		<dict>
 			<key>xpos</key>
 			<integer>190</integer>
 			<key>ypos</key>
-			<integer>40</integer>
+			<integer>50</integer>
 		</dict>
 		<key>AFB4B0D4-E943-4A60-BC1A-5537042E81EB</key>
 		<dict>
 			<key>xpos</key>
-			<integer>400</integer>
+			<integer>490</integer>
 			<key>ypos</key>
-			<integer>350</integer>
+			<integer>280</integer>
 		</dict>
 		<key>C1B13666-B5AE-4FF5-BD45-BA764956768E</key>
 		<dict>
@@ -254,9 +296,9 @@
 		<key>D2A4AA1D-427F-4934-9341-F6E21C2BAA7F</key>
 		<dict>
 			<key>xpos</key>
-			<integer>160</integer>
+			<integer>190</integer>
 			<key>ypos</key>
-			<integer>350</integer>
+			<integer>330</integer>
 		</dict>
 	</dict>
 	<key>version</key>
