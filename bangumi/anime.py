@@ -114,8 +114,10 @@ class Animelist(object):
             if result['code'] == 200:
                 episode = str(watched + 1)
                 notify(
-                    "Bangumi",
-                    ("Sucess mark episode {0} as watched!".format(episode))
+                    "Bangumi", (
+                        "Sucessfully mark episode {0} as watched!".
+                        format(episode)
+                    )
                 )
                 return episode
             else:
