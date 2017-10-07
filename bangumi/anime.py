@@ -89,7 +89,7 @@ class Animelist(object):
         params = {'source': 'onAir', 'auth': self._auth, 'subject_id': subject}
         r = web.get(url, params=params)
         r.raise_for_status()
-        return len(r.json()['eps'])
+        return len(r.json()['eps']) if r.content != 'null' else 0
 
     def update(self, subject):
         """Mark the next episode as watched.
