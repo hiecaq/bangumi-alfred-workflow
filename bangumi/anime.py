@@ -54,6 +54,7 @@ class Animelist(object):
                 ),
                 arg=item['subject']['id'],
                 valid=True,
+                autocomplete=item['subject']['name'],
                 icon=ICON
             ) for item in raw
         ]
